@@ -19,12 +19,19 @@ int main()
 {
 	int n = 5;
 
-	int arr1[ Factorial(5) ]; 
+	int arr1[ Factorial(5) ]; // ok.  컴파일 하면 "int arr1[120]"
 
-	int arr2[Factorial(n)]; 
+//	int arr2[ Factorial(n) ]; // error. 인자값을 컴파일 할때 알수 없다.
+							  //       "배열의 크기" 는 컴파일 할때 알아야 한다.
 					
 
-	int s2 = Factorial(n); 
+	int s1 = Factorial(n);  // ok. 실행시간에 수행
 
-	int s = Factorial(5);
+	int s2 = Factorial(5);  // 컴파일 시간 ? 실행시간 ?
+							// => 컴파일러마다 다를수 있음. 표준에서 정의하지 않음.
+
+	const int s3 = Factorial(5); // 위와 동일
+
+	constexpr int s4 = Factorial(5);	// 컴파일 시간!!
+										// constexpr 상수는 컴파일 시간에 값을 알아야 한다.
 }
