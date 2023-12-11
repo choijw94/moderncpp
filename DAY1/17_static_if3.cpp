@@ -27,3 +27,11 @@ int main()
 	foo(&n);
 	foo(3.4);
 }
+
+// if           : 조건이 false 라면 실행안함
+// if constexpr : 조건이 false 라면 템플릿 인스턴스화에 참여 안함.
+
+// constexpr 의 3가지 용도
+// 1. constexpr 상수 - C++11
+// 2. constexpr 함수 - C++11
+// 3. constexpr if   - C++17
