@@ -1,8 +1,8 @@
 
-// C++98 enum
+// C++98 enum : unscoped enum
 // enum COLOR { red = 1, green = 2 };
 
-// C++11 enum
+// C++11 enum : scoped enum
 enum class COLOR { red = 1, green = 2 };
 
 int main()
