@@ -10,7 +10,7 @@ int main()
 	std::string s1 = "\\\\.\\pipe\\server";
 
 	// Raw String : '\' 를 일반 문자로 취급
-	std::string s2 = R("\\.\pipe\server");  // 이 문자열이 위와 동일
+	std::string s2 = R"(\\.\pipe\server)";  // 이 문자열이 위와 동일
 
 	std::cout << s1 << std::endl;
 	std::cout << s2 << std::endl;
