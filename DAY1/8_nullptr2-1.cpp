@@ -7,8 +7,9 @@ void foo(int* p) {}
 // => "함수(인자)" 형태로 호출하는 함수
 template<typename F, typename ARG>
 void forward_parameter(F f, ARG arg)	// int arg = 0; 
-{
+{										// std::nullptr_t arg = nullptr;
 	f(arg); // int arg 였다면 error.
+			// std::nullptr_t arg 였다면 에러 아님.!!
 }
 
 int main()
