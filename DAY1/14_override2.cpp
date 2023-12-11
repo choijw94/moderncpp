@@ -1,5 +1,5 @@
 #include <iostream>
-
+/*
 int n = 0;
 
 // #1. 아래 2개 차이점 명확히 알아야 합니다.
@@ -13,14 +13,14 @@ int const c2 = 10; // c1, c2 는 동일
 const int* p1 = &n;
 int const* p2 = &n;  // p1, p2 는 동일
 int* const p3 = &n;  // p3는 p1, p2 와 다름. * 위치 에 주의
-
-
-
+*/
+//==============================================================
 
 template<typename T>
 class Base
 {
 public:
+	// "a 가 const" 라는 의미 입니다.
 	virtual void foo(const T a)
 	{
 		std::cout << "Base foo" << std::endl;
@@ -34,7 +34,9 @@ public:
 	// => 아래 재정의 코드는 잘못된 재정의 입니다.
 	// => "override" 키워드를 사용했다면 "잘못되었다는 사실을 바로 알아낼수 있습니다."
 	// => "override" 키워드를 붙이지 않으면, 잘못되었다는 것을 바로 알수 없습니다.
-	virtual void foo(const int* a)
+
+//	virtual void foo(const int* a)	// a가 가리키는 곳이 const 
+	virtual void foo(int* const a)	// a가 const. 이 코드가 기반 클래스 함수를 override 한것
 	{
 		std::cout << "Derived foo" << std::endl;
 	}
