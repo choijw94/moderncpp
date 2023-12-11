@@ -6,6 +6,7 @@
 // 
 // static_assert(exp) : exp 는 반드시 컴파일 시간에 확인 가능해야 한다.
 //						"age > 0" 와같은 변수 확인은 안됨.
+// => 함수 안또는 밖에 만들수 있습니다.
 
 static_assert(sizeof(int*) >= 8, "error, not 64bit");
 
