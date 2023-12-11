@@ -16,7 +16,10 @@ template<typename T> void foo(T a)
 	// __PRETTY_FUNCTION__ : 인자와 반환 타입을 포함한 함수이름. C++ 표준 아님. g++ 만 지원
 	
 	//std::cout << __func__ << std::endl;
-	std::cout << __FUNCSIG__ << std::endl;
+	//std::cout << __FUNCSIG__ << std::endl;
+
+
+	// #3. godbolt.org 에서 "어셈블리 코드" 를 확인하면 인자의 타입을 확인 가능
 
 
 }
