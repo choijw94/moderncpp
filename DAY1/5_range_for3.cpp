@@ -2,6 +2,7 @@
 #include <vector>
 // 사용자 정의 타입이라고 
 // begin/end 만 있으면 range-for 에 넣을수 있습니다.
+// => 단, 아래 예제는 모든 멤버가 같은 타입(int) 일 경우만 사용해야 합니다.
 struct Point3D
 {
 	int x, y, z;
