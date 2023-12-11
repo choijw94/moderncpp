@@ -13,6 +13,15 @@ public:
 	// => 필요 없다면 "삭제" 하면 컴파일러는 제공하지 않습니다.
 
 	Point(const Point&) = delete;
+
+
+	// C++98 시절의 테크닉( = delete 가 없던 시절)
+	// => private 영역에 선언만!!!
+	// => 의도적으로 구현을 제공하지 않으므로, 사용하는 코드가 있다면 에러 나오게 하는것
+	/*
+private:
+	Point(const Point&); 
+	*/
 };
 int main()
 {
