@@ -21,7 +21,8 @@ class Base
 {
 public:
 	// "a 가 const" 라는 의미 입니다.
-	virtual void foo(const T a)
+	virtual void foo(const T a) // 최초에 이렇게 하지말고
+	//virtual void foo(T const a)	  // 이렇게 했다면 override 할때 아래 같은 실수를 막을수도 있습니다.
 	{
 		std::cout << "Base foo" << std::endl;
 	}
