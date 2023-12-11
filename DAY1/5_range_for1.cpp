@@ -22,7 +22,9 @@ int main()
 	// 2칸씩 이동 가능한가요 ?
 	// 거꾸로 할수 없나요 ?
 	// => 모두 C++20 부터 가능. 그전에는 안됨.
-	for (auto e : std::views::reverse(v) )
+//	for (auto e : std::views::reverse(v) )
+//	for (auto e : std::views::take(v, 3))
+	for (auto e : std::views::take(std::views::reverse(v) , 3))
 	{
 		std::cout << e << ", ";
 	}
