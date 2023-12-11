@@ -15,7 +15,8 @@ template<typename T> void foo(T a)
 	//                 조건문이 컴파일 시간에 false 로 결정되면
 	//				   인스턴스화된 함수에는 포함 안됨.
 	//				   C++17
-
+	//				   "if constexpr" 또는 "static if" 라고도 합니다.
+	// 	
 	if constexpr (false)
 		*a = 10;
 }
