@@ -12,12 +12,12 @@ struct PACKET
 static_assert(sizeof(PACKET) == sizeof(char) + sizeof(int),
 			 "error, unexpected padding..");
 
-
+/*
 int main()
 {
 	std::cout << sizeof(PACKET) << std::endl; // ?
 }
-
+*/
 
 
 
@@ -25,4 +25,14 @@ int main()
 template<typename T> void object_set_zero(T* p)
 {
 	memset(p, 0, sizeof(T)); 
+}
+
+class Object
+{
+	int data;
+};
+int main()
+{
+	Object obj;
+	object_set_zero(&obj);
 }
