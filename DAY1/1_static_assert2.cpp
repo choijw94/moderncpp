@@ -1,6 +1,8 @@
 #include <iostream>
 #include <type_traits> 
 
+// 교재 9 page 보세요.
+
 #pragma pack(1)		// 구조체 align 을 1byte 단위로( padding 추가하지 말라는 의미)
 struct PACKET
 {
@@ -43,3 +45,9 @@ int main()
 	Object obj;
 	object_set_zero(&obj);
 }
+
+// 핵심 
+// 1. static_assert 는 실행시간 성능, 기능에는 전혀 영향이 없습니다.
+// 2. static_assert 는 안전한 코드를 만드는 데 도움을 줍니다.
+// 3. static_assert 는 많이 사용해도 성능과는 무관합니다.
+//   
