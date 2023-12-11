@@ -24,12 +24,19 @@ int main()
 
 template<typename T> void object_set_zero(T* p)
 {
+	// std::is_polymorphic<T>::value : T가 가상함수를 가진 타입이라면 true
+
+	static_assert( !std::is_polymorphic<T>::value,
+		"error, T has virtual function");
+
 	memset(p, 0, sizeof(T)); 
 }
 
 class Object
 {
 	int data;
+public:
+	virtual void foo() {}
 };
 int main()
 {
