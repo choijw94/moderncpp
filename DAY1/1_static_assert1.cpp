@@ -18,7 +18,8 @@ void foo(int age)
 
 	int* p = new int[age];
 
-	delete[] p;
+	delete[] p; // 배열로 할당한 경우는 반드시 배열 delete 해야 합니다.
+//	delete p;   // 이렇게 하면 안됩니다. 잘못된 코드
 }
 
 int main()
