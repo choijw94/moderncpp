@@ -12,4 +12,8 @@ int main()
 	// C++11 constexpr : 컴파일 시간에 값을 알수있는 상수을 만드는 것
 	constexpr int c3 = 10; // ok
 	constexpr int c4 = n;  // error.
+
+
+	// C++ 공식 용어중 "constant expression" 이 있습니다.
+	// => 컴파일 시간에 값을 알수 있는 표현식(expression)
 }
