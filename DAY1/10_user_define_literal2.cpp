@@ -15,6 +15,12 @@ int main()
 	foo("hello");	// char*
 	foo("hello"s);  // string.   operator""s(const char*) 호출되는데
 					//           반환 타입이 std::string 입니다.
+
+	std::chrono::seconds s1(10); // 이 코드는
+	auto s2 = 10s;               // 이 코드와 동일합니다.
+					// std::chrono::seconds operator""s(unsigned long long)
+
+	std::chrono::seconds s3 = 1h + 30min + 20s;
 				
 }
 
