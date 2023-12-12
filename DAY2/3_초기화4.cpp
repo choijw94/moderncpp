@@ -3,7 +3,9 @@ class Vector
 {
 	int sz;
 public:
-	Vector(int s) : sz(s) {}
+	// explicit 생성자 : 직접 초기화만 가능하고, 복사 초기화는 사용할수 없다.
+	// => 아래 main 에서 "copy initializaton" 부분은 모두 에러!
+	explicit Vector(int s) : sz(s) {}
 };
 void foo(Vector v) {} 				  
 
