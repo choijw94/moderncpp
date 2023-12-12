@@ -1,6 +1,11 @@
 #include <iostream>
 #include <type_traits>
 
+// __VA_ARGS__ 
+// => C 언어 표준 문법 입니다.
+// => naver 에서 "C 가변 인자 매크로" 검색하면 자료 많이 있습니다.
+
+
 #define VALUE_CATEGORY( ... )										\
 	if (std::is_lvalue_reference_v< decltype( ( __VA_ARGS__ ) ) >)	\
 		std::cout << "lvalue" << std::endl;							\
