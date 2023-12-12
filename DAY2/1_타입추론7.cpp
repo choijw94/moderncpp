@@ -37,7 +37,7 @@ int main()
 	// x : int[3]
 	auto  a11 = x;	// 배열로 결정하면 "int a11[3] = x;" 이므로 에러.
 					// 그래서         "int* a11 = x;" 로 결정
-					// auto = int*     a12 = int*
+					// auto = int*     a11 = int*
 
 	auto& a12 = x;  // auto = int[3]   a12 = int(&)[3]
 }
