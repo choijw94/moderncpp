@@ -26,7 +26,9 @@ int main()
 	std::cout << "-------" << std::endl;
 }
 
-
+// 파이썬, Rust 등의 언어도 임시객체 개념 있습니다.
+// p1 = Point(1, 2) // p1 이름이 파괴될때 deinit 호출
+// Point(1, 2)      // 다음줄로 가기전에  deinit 호출
 
 
 
