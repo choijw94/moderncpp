@@ -45,8 +45,8 @@ int main()
 //	r.x = 10;
 
 	// #2. 함수 인자의 의미를 정확히 이해 하세요
-	// f1(int&)  : int&  타입을 받겠다는 것이 아니라 lvalue 을 받겠다는 것
-	// f1(int&&) : int&& 타입을 받겠다는 것이 아니라 rvalue 을 받겠다는 것
+	// f1(int&)  : int&  타입을 받겠다는 것이 아니라 int 타입의 lvalue 을 받겠다는 것
+	// f1(int&&) : int&& 타입을 받겠다는 것이 아니라 int 타입의 rvalue 을 받겠다는 것
 
 
 	// #3.
@@ -63,6 +63,9 @@ int main()
 	// static_cast<Type>(r3) 에서 Type 이 && 가 붙어 있는 경우
 	// => "타입 캐스팅" 이 아닌 "value 속성을 변경하는 캐스팅" 입니다.
 	// => cppreference.com 에서 "static_cast" 찾아 보세요
+
+
+	
 }
 
 
