@@ -19,6 +19,7 @@ int main()
 	// => 평가되지 않은 표현식(unevaluated expression) 이라고 합니다.
 	decltype( add(1, 2) ) ret = add(1, 2);
 
+
 	// C++에서 평가되지 않은 표현식은 4개가 있습니다.
 	decltype(add(1, 2)) d; 
 	
@@ -27,5 +28,9 @@ int main()
 	bool b = noexcept(add(1, 2));
 
 	const std::type_info& t = typeid(add(1, 2));
+
+	//===================
+	// 우변의 타입을 auto 가 아닌 decltype 규칙으로 결정
+	decltype(auto) ret = add(1, 2);
 
 }
