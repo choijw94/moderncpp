@@ -21,6 +21,8 @@ int main()
 	// => std::initializer_list 로 해결..
 	std::vector<int> v1 = { 1,2,3,4,5 }; // 
 	std::vector<int> v2{ 1,2,3,4,5 }; // 
+
+//	std::vector v3{ 1,2,3,4,5 }; // C++17 부터는 타입도 생략가능.
 }
 
 class Test
