@@ -13,7 +13,7 @@ public:
 // 임시객체와 함수 인자 - 81 page
 void draw_line(const Point& from, const Point& to) {}
 
-void init(Point& pt) { pt.x = 0; pt.y = 0; }
+void reset(Point& pt) { pt.x = 0; pt.y = 0; }
 
 int main()
 {
@@ -25,12 +25,27 @@ int main()
 
 	// 함수 인자로만 사용할 객체는 "임시 객체" 를 사용하는 것이 좋습니다.
 	draw_line( Point(1, 1), Point(5, 5) ) ;
+	draw_line( {1, 1}, {5, 5} ); // C++11 부터는 이렇게도 가능. 위 코드와 동일
+	//=========================================================
+
+	
+	Point pt(1, 1);
+	reset(pt); // ok. x, y 를 reset 해달라.
+
+	reset( Point(1, 1) );	// 임시객체를 reset 해달라 ? 
+							// error. 
 
 
 	std::cout << "-----" << std::endl;
 }
 
-
+// 참고
+// 인자가 1개인 생성자를 explicit 로 하는 경우는 많이 있습니다.
+// 인자가 2개 이상인 생성자도 explicit 가능합니다. 많이 사용하지는 않습니다
+// 인자가 0개 인 생성자도 explicit 가능하고, 가끔 사용합니다.
+// 
+// Point p1{};
+// Point p2 = {}; // explicit 라면 error
 
 
 
