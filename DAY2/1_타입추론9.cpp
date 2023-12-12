@@ -24,7 +24,7 @@ int main()
 
 	decltype(n + n) d4;		// n + n = 10 는 에러!   int d4;
 
-	decltype(++n)   d5;		// ++n = 10 는 에러 아님  int& d5						
+	decltype(++n)   d5;		// ++n = 10 는 에러 아님  int& d5. 초기값 문제로 error						
 						
 	decltype(n++)   d6;		// n++ = 10 은 에러.     int d6			
 
