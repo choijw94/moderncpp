@@ -23,22 +23,37 @@ int main()
 	int& r1 = n;
 	foo(r1);	// (1) 호출, 없으면 (2)
 
-
 	int&& r2 = 10; 
 	foo(r2);	// 1번 호출!!
 
+//  int n = 10
 //	Point pt(1, 2);
 
-	// 타입과 value category 를 헷갈리지 마세요
+	// #1. 타입과 value category 를 헷갈리지 마세요
 	// 
 	//					타입					value 속성
-	// n
-	// 10
-	// pt
-	// Point(1,2);
-	// r1
-	// r2
+	// n				int					lvalue
+	// 10				int					rvalue
+	// pt				Point				lvalue
+	// Point(1,2)		Point				rvalue
+	// r1				int&				lvalue
+	// r2				int&&				lvalue
 	//--------------------------------------------------
+//	Point&& r = Point(1, 1);		
+				// Point(1,1) 이라는 코드는 rvalue, 즉, 이 코드는 등호에 왼쪽에 올수없다
+				// r 이라는 코드는 lvalue, 등호에 왼쪽에 올수 있다.
+//	r.x = 10;
+
+	// #2. 함수 인자의 의미를 정확히 이해 하세요
+	// f1(int&)  : int&  타입을 받겠다는 것이 아니라 lvalue 을 받겠다는 것
+	// f1(int&&) : int&& 타입을 받겠다는 것이 아니라 rvalue 을 받겠다는 것
+
+	// #3.
+	int&& r3 = 10;	// 10 은 rvalue, 하지만 r3 는 lvalue
+					// "named rvalue reference is lvalue" - 구글 검색
+
+	foo(r3);					 // 1번
+	foo(static_cast<int&&>(r3)); // 3번
 }
 
 
