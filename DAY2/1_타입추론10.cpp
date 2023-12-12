@@ -22,5 +22,10 @@ int main()
 	// => auto 자리에 우변을 놓아 달라!
 	// => 우변으로 타입을 추론하는데, 규칙은 decltype 으로 해달라
 	decltype(auto) ret3 = foo();
+	
+	// ret1 은 int 변수, ret2, ret3 은 int& 이므로 x의 별명
+
+	
+	
 }
 
