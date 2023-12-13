@@ -24,7 +24,12 @@ void chronometry(F f, T&& arg)
 
 	// ==> 많은 기술문서들에서 위 () 를 제외하고 설명해서 어려워들 합니다.
 
-	f(static_cast<T&&>(arg));
+//	f(static_cast<T&&>(arg));
+
+
+	// #3. 위 코드처럼 static_cast 로해도 되는데, 대부분 std::forward 사용
+	f( std::forward<T>(arg) );  // std::forward 가 위처럼 캐스팅하는 C++ 표준함수
+								// T&& 가 아닌 T 로 전달하면 됩니다.
 }
 
 int main()
