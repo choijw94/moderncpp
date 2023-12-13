@@ -21,8 +21,20 @@ public:
 
 	// #2. call by non-const (lvalue) reference
 	// => 에러 아님. 
-	Point(Point& other) : x(other.x), y(other.y) {}
+	// => 단, rvalue 를 받을수 없다
+	// => Point ret = foo(); 에서 foo 가 값반환(임시객체, rvalue) 이라면 에러!!
+	// Point(Point& other) : x(other.x), y(other.y) {}
+
+	// #3. call by const (lvalue) reference
+	// => C++98 시절에 lvalue, rvalue 를 모두 받을수 있는 유일한 방법
+	Point(const Point& other) : x(other.x), y(other.y) {}
 };
+
+Point foo()	
+{
+	Point p(1, 2);
+	return p;		// 값 반환 이므로 임시객체 입니다.
+}
 
 int main()
 {
@@ -33,6 +45,8 @@ int main()
 						// => 복사 생성자 필요
 						// => 사용자가 만들지 않아도 컴파일러가 제공
 						// => Point p3 = p2;
+
+	Point ret = foo();  // 복사 생성자 인자가 Point& 였다면 에러!
 }
 
 
