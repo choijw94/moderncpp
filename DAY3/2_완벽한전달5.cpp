@@ -38,6 +38,13 @@ int main()
 	
 	// 아래 코드를 보고 생성되는 chronometry 함수의 모양과 캐스팅 코드를 예측해 보세요
 	chronometry(foo, 10);
+				// => 10 은 rvalue, T=int, T&&=int&&
+				// => chronometry(F f, int&& arg) 함수 생성
+				// => static_cast<int&&>(arg) 이므로 arg 를 rvalue 로 캐스팅하는 코드
+				  
 	chronometry(goo, n);
+				// => n 은 lvalue, T=int&, T&&=int& && => int&
+				// => chronometry(F f, int& arg) 함수 생성
+				// => static_cast<int&>(arg) 이므로 arg 를 lvalue 로 캐스팅하는 코드
 
 }
