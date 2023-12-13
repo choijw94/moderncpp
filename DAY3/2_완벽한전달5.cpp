@@ -29,6 +29,7 @@ void chronometry(F f, int&& arg)
 template<typename F, typename T>
 void chronometry(F f, T&& arg)
 {
+	std::cout << __FUNCSIG__ << std::endl;
 	f(static_cast<T&&>(arg));
 }
 
