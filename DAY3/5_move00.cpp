@@ -8,7 +8,13 @@ public:
 	Point(int a, int b) {}	// 2
 
 	// 컴파일러가 만드는 복사 생성자의 모양
-	Point(const Point& other) : x(other.x), y(other.y) {}
+//	Point(const Point& other) : x(other.x), y(other.y) {}
+
+	// 복사 생성자를 사용자 만들면 사용자가 만든것을 사용하게 됩니다.
+	// 복사 생성자의 정확한 모양을 생각해 봅시다.
+
+	// #1. call by value
+	Point(Point other) : x(other.x), y(other.y) {}
 
 };
 
