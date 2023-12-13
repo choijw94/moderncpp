@@ -33,7 +33,8 @@ int main()
 
 	// #4. 객체를 전달하지 말고, 
 	//     객체를 만들기 위한 "생성자 인자"를 전달하자!! 핵심!!!!
-
+	v.emplace_back(1, 2);
+			// => emplace_back 함수가 내부적으로 "new Point(1,2)" 처럼 버퍼에 객체생성
 
 
 	std::cout << "-----" << std::endl;
