@@ -14,8 +14,14 @@ public:
 	// 복사 생성자의 정확한 모양을 생각해 봅시다.
 
 	// #1. call by value
-	Point(Point other) : x(other.x), y(other.y) {}
+	// => Point p3(p2) 가 복사 생성자를 호출하게 되는데..  인자 p2 가 전달될때
+	// => 다시, Point other = p2 가 되므로 복사 생성자가 무한히 호출되는 모양
+	//    컴파일 에러!!
+//	Point(Point other) : x(other.x), y(other.y) {}
 
+	// #2. call by non-const (lvalue) reference
+	// => 에러 아님. 
+	Point(Point& other) : x(other.x), y(other.y) {}
 };
 
 int main()
@@ -26,6 +32,7 @@ int main()
 	Point p3(p2);		// Point(Point) 의 생성자 필요
 						// => 복사 생성자 필요
 						// => 사용자가 만들지 않아도 컴파일러가 제공
+						// => Point p3 = p2;
 }
 
 
