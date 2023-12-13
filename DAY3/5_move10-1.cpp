@@ -33,9 +33,9 @@ public:
 	}
 };
 
-
 int main()
 {
+	std::pair<int, double> p1(1, 3.4);
 
 }
 
