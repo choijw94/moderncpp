@@ -6,7 +6,7 @@ class Point
 {
 	int x, y;
 public:
-	Point(int a, int b)	{ std::cout << "Point()" << std::endl;	}
+	Point(int a, int b)	{ std::cout << "Point(int, int)" << std::endl;	}
 	~Point()            { std::cout << "~Point()" << std::endl; }
 	Point(const Point&) { std::cout << "copy ctor" << std::endl; }
 };
@@ -33,6 +33,7 @@ int main()
 
 	// #4. 객체를 전달하지 말고, 
 	//     객체를 만들기 위한 "생성자 인자"를 전달하자!! 핵심!!!!
+
 	v.emplace_back(1, 2);
 			// => emplace_back 함수가 내부적으로 "new Point(1,2)" 처럼 버퍼에 객체생성
 
@@ -40,4 +41,11 @@ int main()
 	std::cout << "-----" << std::endl;
 }
 
+// main					emplace_back						Point(int a, int b)
+// 1, 2 ================> 전달받은 인자로 Point 객체생성
+//						  즉, new Point(1, 2) =================> 
+
+// emplace_back : 전달 받은 1, 2 를 Point 의 생성자로 다시 전달.. 합니다.
+//				  전달 받은 인자를 어떠한 변경도 없이 생성자에 보내야 합니다
+//				  "완벽한 전달" 기술이 없으면 만들수 없습니다.
 
