@@ -35,10 +35,14 @@ int main()
 	std::shared_ptr<Point> sp1 = std::make_shared<Point>(1, 2);
 								// => sizeof(Point) + sizeof(control block) 
 								//    를 한번에 할당
+								// => 그리고 인자로 전달된 1, 2 를 사용해서 Point 생성자에 전달
+								//	  (완벽한 전달 기술 사용)
 								// => 해당 메모리를 관리하는 std::shared_ptr 생성후
 								//	  반환
 }
 
+// main						make_shared				Point(int a, int b)
+// (1, 2) ===================> 받은 인자를 다시 =========> 이곳으로 전달
 
 
 
