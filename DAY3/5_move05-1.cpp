@@ -1,4 +1,5 @@
 #include <iostream>
+#include <type_traits>
 
 class Object
 {
@@ -15,9 +16,22 @@ public:
 // move : 인자로 lvalue, rvalue 를 모두 받아서 rvalue 로 캐스팅
 
 template<typename T>
-T&& mymove(T&& obj)
+std::remove_reference_t<T>&& mymove(T&& obj)
 {
-	return static_cast<T&&>(obj);
+	// 핵심 : 아래 코드는 rvalue casting 이 아닙니다
+	// mymove 인자로 rvalue 를 보냈으면 "rvalue 캐스팅"
+	//              lvalue 를 보냈으면 "lvalue 캐스팅"
+	// 
+	// static_cast<T&&>(obj); // 즉, 이코드는 std::forward<T>(obj) 입니다.
+	// 
+
+	// 해결책
+	// move 는 항상 rvalue 로 캐스팅 되어야 합니다.
+	// T 안에 있는 모든 참조를 제거하고 && 를 붙여서 캐스팅 하면 됩니다.
+	// std::remove_reference_t<T> : T 안에 있는 모든 참조를 제거한 타입 구하기
+
+	return static_cast<std::remove_reference_t<T> &&>(obj);
+						// => 위 코드는 항상 rvalue 캐스팅입니다.
 }
 
 int main()
