@@ -16,7 +16,7 @@ void goo(int& a) { a = 100; }
 
 // 특정 함수의 성능(수행시간)을 측정하는 함수
 template<typename F, typename T>
-void chronometry(F f, T arg)
+void chronometry(F f, const T& arg) // 이렇게 해도 완벽한 전달은 아닙니다.!!
 {
 	// =========> 여기서 시간 측정후 보관
 	f(arg);	   // 함수를 호출
