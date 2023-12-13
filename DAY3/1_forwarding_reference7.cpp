@@ -2,6 +2,15 @@ struct Point
 {
 	int x, y;
 	Point(int a, int b) : x(a), y(b) {}
+
+	// 아래 처럼 복사 생성자 만들면 복사 되는지 확인 가능합니다.
+	Point() = default;
+
+	Point(const Point& other) : x(other.x), y(other.y)
+	{
+		std::cout << &other << "의 객체를 복사해서 ";
+		std::cout << this   << " 객체 생성" << std::endl;
+	}
 };
 
 // lvalue 와 rvalue 를 모두 받을수 있는 함수 만들기. 
