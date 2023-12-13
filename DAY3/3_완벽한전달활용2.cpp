@@ -25,12 +25,18 @@ int main()
 //	std::shared_ptr<Point> sp1( new Point(1,2) );
 
 
-	// 2.
+	// 2. std::make_shared
 	// => Point 객체와 control block 을 붙여서 한번에 할당하면
 	//    메모리 효율이 좋아 집니다.
 	// => 그렇게 하려면 사용자가 "new Point" 하면 안되고..
 	//    라이브러리 내부에서 "sizeof(Point) + sizeof(control block)" 을 
 	//    한번에 할당해야 합니다.
+
+	std::shared_ptr<Point> sp1 = std::make_shared<Point>(1, 2);
+								// => sizeof(Point) + sizeof(control block) 
+								//    를 한번에 할당
+								// => 해당 메모리를 관리하는 std::shared_ptr 생성후
+								//	  반환
 }
 
 
