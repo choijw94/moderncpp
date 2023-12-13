@@ -14,15 +14,27 @@
 
 // => 컴파일러에게 move 계열의 함수를 요청하려면 "= default" 를 사용하세요
 
+
+// 규칙 3. 사용자가 이동계열(이동생성자)만 제공하면
+// => 컴파일러는 복사 생성자를 제공할수 없다.(정확히는 복사 생성자를 "삭제" 합니다)
+// => 복사가 필요한 코드가 있다면 컴파일 에러(복사가 필요할때 이동생성자를 호출할수는 없다)
+
+// => 복사의 디폴트 버전이 필요하면 "= default" 로 요청하면 된다.
+
 struct Object
 {
 	std::string name;
 	
 	Object(const std::string& n) : name(n) {} // 생성자!
 
-	// 핵심 : 복사 생성자와 이동생성자를 만들지 않았습니다.
+	// 사용자가 이동 생성자만 제공
+	Object(Object&& obj) : name(std::move(obj.name))
+	{
+		std::cout << "move\n";
+	}
 
 
+	/*
 	// 복사 계열만 만들면
 	Object(const Object& obj) : name(obj.name)
 	{
@@ -32,6 +44,7 @@ struct Object
 	Object(Object&&) = default;
 	Object& operator=(const Object&) = default;
 	Object& operator=(Object&&) = default;
+	*/
 };
 
 int main()
@@ -43,5 +56,5 @@ int main()
 	Object o4 = std::move(o2);
 
 	std::cout << o1.name << std::endl; // "obj1"
-	std::cout << o2.name << std::endl; // "obj2"
+	std::cout << o2.name << std::endl; // ""
 }
