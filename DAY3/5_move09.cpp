@@ -1,6 +1,14 @@
 #include <iostream>
 #include <string>
 
+// rule of 0
+// => 복사, 이동 아무것도 만들지 않으면 컴파일러가 모두 지원한다.
+
+// => 자원 관리를 직접 하지말고, 자원관리 클래스(STL) 에 의존해라
+// char* => std::string
+// int*  => std::vector, std::shared_ptr
+
+
 class Cat
 {
 	std::string name;
@@ -8,58 +16,9 @@ class Cat
 public:
 	Cat(const std::string& n, int a) : name(n),  age(a)
 	{
-		name = new char[strlen(n) + 1];
-		strcpy_s(name, strlen(n) + 1, n);
-	}
-
-	~Cat() { delete[] name; }
-
-
-
-
-	Cat(const Cat& c) : age(c.age)
-	{
-		name = new char[strlen(c.name) + 1];
-		strcpy_s(name, strlen(c.name) + 1, c.name);
-		std::cout << "복사" << std::endl;
-	}
-
-	Cat(Cat&& c) : age(c.age), name(c.name)
-	{
-		c.name = nullptr;
-		std::cout << "이동" << std::endl;
-	}
-
-	// 복사생성자를 만든 경우, 대부분 대입연산자도 만들어야 합니다.
-	Cat& operator=(const Cat& c)
-	{
-		// 자신과의 대입을 조사 ( a1 = a1 의 경우는 아무일도 할 필요 없다.)
-		if (&c == this) return *this;
-
-		age = c.age;
-
-		delete[] name;
-		name = new char[strlen(c.name) + 1];
-		strcpy_s(name, strlen(c.name) + 1, c.name);
-
-		return *this;
-	}
-
-	// 이동 대입 연산자
-	Cat& operator=(Cat&& c)
-	{
-		if (&c == this) return *this;
-
-		age = c.age;
-
-		delete[] name;
-
-		name = c.name;
-		c.name = nullptr;
-
-		return *this;
 	}
 };
+
 
 int main()
 {
