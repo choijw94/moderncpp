@@ -23,19 +23,24 @@ public:
 	// C++11 이후의 최선의 코드
 	// => 2개의 setter 를 만드세요
 	// 방법 1. 2개를 직접 만들기
-//	void set_name(const std::string& n) { name = n; }
-//	void set_name(std::string&& n)      { name = std::move(n); }
+	void set_name(const std::string& n) { name = n; }
+	void set_name(std::string&& n)      { name = std::move(n); }
 
-
+	/*
 	// 방법 2. T&& 를 사용하면 위 2개를 자동생성할수 있습니다.
 	template<typename T>
 	void set_name(T&& n)
 	{
 		// 다음중 맞는 것은 ?
-		name = n;					// 1
-		name = std::move(n);		// 2
-		name = std::forward<T>(n);	// 3
+//		name = n;					// 1. 항상 복사 대입 연산자
+//		name = std::move(n);		// 2. 항상 이동 대입 연산자
+		name = std::forward<T>(n);	// 3. ok..
+									//    set_name 인자로 lvalue 를 보내면 lvalue 캐스팅
+									//					  rvalue 를 보내면 rvalue 캐스팅
 	}
+	*/
+	// 권장 : 위 코드에서는 "방법1" 처럼 2개를 만드는 것을 T&& 버전보다 권장합니다.!!
+	// => 가독성도 좋고, 안전합니다.
 };
 
 
@@ -52,6 +57,16 @@ int main()
 
 	std::cout << s1 << std::endl; // "kim"
 	std::cout << s2 << std::endl; // ""
+	//------------------------------------------------------
+
+	// STL 컨테이너들은 push_xxx() 함수가 모두 move 버전도 지원합니다.
+	std::vector<std::string> v;
+
+	v.push_back(s1);			// s1을 복사해서 넣겠다. s1 계속 사용가능
+	v.push_back(std::move(s1)); // s1의 자원을 이동해가라는 것. s1 더이상 사용안함
+
+	// v.emplace_back( 인자로 객체가 아닌 생성자 인자 )
+	// v.emplace_back( 객체 ) => 이경우 new Point(pt) 이므로 복사 생성자
 }
 
 
