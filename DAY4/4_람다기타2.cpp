@@ -19,3 +19,16 @@ int main()
 	std::cout << f1(1.1, 2)   << std::endl; // 3.1
 	std::cout << f1(1,   2.1) << std::endl; // 3.1
 }
+
+// generic 람다의 원리
+// => operator() 함수가 template
+// => 1, 2 번째 인자는 별도의 템플릿 인자 사용.
+class CompilerGeneratedName
+{
+public:
+	template<typename T1, typename T2> 
+	auto operator()(T1 a, T2 b) const
+	{
+		return a + b;
+	}
+};
