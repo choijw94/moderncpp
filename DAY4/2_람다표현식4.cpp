@@ -31,6 +31,8 @@ int main()
 
 	// 아래 코드를 잘 생각해 보세요. sort() 함수가 몇개 생성되었을까요 ?
 	// => 동일한 람다 표현식이라도 다른 타입이므로 "3개의 sort" 생성됩니다.
+	// => sort 같은 함수가 "구현이 간단하고 inline 또는 constexpr 이고
+	//    컴파일러 최적화 까지 고려했을때는 아래 코드는 오버헤드가 크지 않습니다!
 	std::sort(v.begin(), v.end(), [](int a, int b) { return a < b; });
 	std::sort(v.begin(), v.end(), [](int a, int b) { return a < b; });
 	std::sort(v.begin(), v.end(), [](int a, int b) { return a < b; });
