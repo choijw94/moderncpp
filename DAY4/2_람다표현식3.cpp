@@ -15,6 +15,15 @@ int main()
 				// class ClosureType{ operator()(){} }; ClosureType();
 
 	int n1 = add(1, 2);
-	int n2 = add.operator()(1, 2); // ok..
+	int n2 = add.operator()(1, 2);	// ok.. 결국 함수 객체이므로 
+									// 이렇게 사용해도 됩니다
+
+
+	// #2. 다음중 에러를 모두 고르세요
+	//     에러가 아닌 코드중 최선의 코드를 고르세요
+	auto  f1       = [](int a, int b) { return a + b; };
+	auto& f2       = [](int a, int b) { return a + b; };
+	const auto& f3 = [](int a, int b) { return a + b; };
+	auto&& f4      = [](int a, int b) { return a + b; };
 }
 
