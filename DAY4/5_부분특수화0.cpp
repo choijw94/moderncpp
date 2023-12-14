@@ -19,8 +19,17 @@ template<typename T> void foo(T a)
 
 
 	// 아래 코드를 생각해 보세요
-	T::data * p1;
-	T::DWORD* p2;	
+	// dependename name(의존 이름)
+	// => template 인자 T에 의존해서 꺼내는 이름
+	// => "T::이름" 에서 컴파일러는 무조건 이름을 "값"으로 해석한다.
+	// => 아래 코드에서 * 를 곱하기로 해석
+//	T::data  * p1;	// error. p1 이 없다.
+//	T::DWORD * p2;	// error. p2 가 없다.
+					// 그런데, 이 코드의 의도는 포인터 변수 p2의 선언
+
+	// dependename name 이 값이 아닌 타입으로 사용되게 하려면 컴파일러에게
+	// 알려주어야 합니다
+	typename T::DWORD* p3; // ok
 }
 
 
