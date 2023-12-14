@@ -18,13 +18,19 @@ int main()
 	std::cout << v1 << ", " << v2 << std::endl; // 10, 20
 	//========================================================
 	// 아래 코드를 생각해보세요
-	std::function<void(int, int)> f;
+	// auto f;  // 이렇게 할수가 없어서
+	std::function<void(int, int)> f; // auto 대신 function 으로 했습니다.
+	
+	{
+		int n1 = 0, n2 = 0;
 
-	int n1 = 0, n2 = 0;
+		f = [&n1, &n2](int a, int b) { n1 = a; n2 = b; };
 
-	f = [&n1, &n2](int a, int b) { n1 = a; n2 = b; };
+	}	// <== 이순간 n1, n2 는 파괴 됩니다.
+		// <== f 객체가 가진 참조(n1, n2) 는 잘못된 참조가 됩니다.
+		// <== dangling reference!!
 
-	f(10, 20);
+	f(10, 20); // 결국 지역변수 n1, n2 를 변경
 	
 
 }
