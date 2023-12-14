@@ -3,9 +3,10 @@
 
 
 // primary template
-template<typename T> class Stack
+template<typename T> class Stack 
 {
 public:
+	// 멤버 함수가 10개일때
 	void push(T a) { std::cout << "T" << std::endl; }
 };
 
@@ -13,6 +14,7 @@ public:
 template<typename T> class Stack<T*>
 {
 public:
+	// 5개
 	void push(T* a) { std::cout << "T*" << std::endl; }
 };
 
