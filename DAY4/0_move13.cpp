@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <type_traits>
 
 // 핵심 : Setter 만들기 #2
 
@@ -36,6 +37,26 @@ public:
 		address = std::forward<T2>(a);
 	}
 
+	// 생성자가 대표적인 setter 입니다
+	// => 아래 생성자는 move 를 지원할수 없는 생성자 입니다.
+//	People(const std::string& n, const std::string& a)
+//		: name(n), address(a) {}
+
+	// 생성자가 인자가 2개 이상 이면 T&& 가 좋습니다.
+//	template<typename T1, typename T2>
+//	People(T1&& n, T2&& a)
+//		: name(std::forward<T1>(n) ), address( std::forward<T2>(a) ) {}
+
+	// 위 생성자의 T1, T2 가 반드시 string 이어야 한다고 제약을 넣기 위해서는
+	// enable_if 등의 기술이 필요 합니다.
+	template<typename T1, typename T2, 
+		typename T3 = std::enable_if_t< 
+				std::is_convertible_v<T1, std::string> && 
+				std::is_convertible_v<T2, std::string> >
+
+	People(T1&& n, T2&& a)
+		: name(std::forward<T1>(n)), address(std::forward<T2>(a)) {}
+
 };
 
 
@@ -45,7 +66,9 @@ int main()
 	std::string name = "kim";
 	std::string addr = "seoul";
 
-	People p;
+//	People p(name, addr);
+	People p(name, std::move(addr) );
+
 	p.set(name,			   addr);
 //	p.set(std::move(name), addr);
 //	p.set(name,			   std::move(addr));
