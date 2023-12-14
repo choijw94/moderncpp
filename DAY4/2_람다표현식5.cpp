@@ -2,6 +2,9 @@
 #include <functional>
 #include <vector>
 
+int foo(int a, int b) { return a + b; };
+
+
 int main()
 {
 	// 람다표현식을 담는 방법
@@ -44,6 +47,10 @@ int main()
 	v.push_back([](int a, int b) { return a - b; });
 	v.push_back([](int a, int b) { return a + b; });
 	v.push_back([](int a, int b) { return a * b; });
+
+	// 참고로 위 v 에는 "람다뿐 아니라 signature 가 동일한 모든 함수가 보관 가능합니다."
+	v.push_back(foo);
+
 
 	// 함수 포인터를 보관하면 안되나요 ?
 	// => 가능한데.. std::function 으로 하세요..
