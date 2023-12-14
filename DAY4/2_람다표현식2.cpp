@@ -13,8 +13,9 @@ int main()
 	//=======================================================
 	// 위 코드를 컴파일러가 아래처럼 변경합니다.
 	
-	class CompilerGeneratedName
-	{
+//	class CompilerGeneratedName		// 람다표현식이 만드는 클래스 이름은 컴파일러가 임의로 결정
+	class ClosureType				// 많은 문서가, 이런 이름으로 설명합니다.
+	{								// "closure" 를 만드는 Type 이라는 의미로
 	public:
 		inline auto operator()(int a, int b) const
 		{
