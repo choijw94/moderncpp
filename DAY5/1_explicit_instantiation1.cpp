@@ -5,7 +5,7 @@
 
 // implicit instantiation : 실제 템플릿을 사용하는 코드를 보고 인스턴스화(B)
 // explicit instantiation : 사용하는 코드가 없어도 명시적으로 인스턴스화 해달라는 요청(A)
-
+//							(C++98)
 template<typename T>
 T square(T a)
 {
