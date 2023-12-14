@@ -24,14 +24,29 @@ int main()
 //	f3 = [](int a, int b) { return a + b; }; // error. 타입이 다릅니다.
 
 
-	// #3. 
-	// 아래 코드를 잘 생각해 보세요. sort() 함수가 몇개 생성되었을까요 ?
+	// #3. 동일한 람다 표현식을 여러번 사용하게 된다면, 
+	//     auto 변수에 담아서 사용하는 것이 좋습니다.
+	
 	std::vector<int> v = { 1,2,3 };
 
+	// 아래 코드를 잘 생각해 보세요. sort() 함수가 몇개 생성되었을까요 ?
+	// => 동일한 람다 표현식이라도 다른 타입이므로 "3개의 sort" 생성됩니다.
 	std::sort(v.begin(), v.end(), [](int a, int b) { return a < b; });
 	std::sort(v.begin(), v.end(), [](int a, int b) { return a < b; });
 	std::sort(v.begin(), v.end(), [](int a, int b) { return a < b; });
 
+
+	// 아래 처럼 사용하면 "1개의 sort" 만 생성됩니다.
+	auto cmp = [](int a, int b) { return a < b; };
+
+	std::sort(v.begin(), v.end(), cmp);
+	std::sort(v.begin(), v.end(), cmp);
+	std::sort(v.begin(), v.end(), cmp);
+
+	// < 연산이 필요하다면 람다표현식이 아닌 "std::less" 를 사용해도 됩니다
+	std::sort(v.begin(), v.end(), std::less<int>());
+	std::sort(v.begin(), v.end(), std::less<int>());
+	std::sort(v.begin(), v.end(), std::less<int>());
 }
 
 
