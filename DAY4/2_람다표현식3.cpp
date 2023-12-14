@@ -19,11 +19,20 @@ int main()
 									// 이렇게 사용해도 됩니다
 
 
-	// #2. 다음중 에러를 모두 고르세요
-	//     에러가 아닌 코드중 최선의 코드를 고르세요
-	auto  f1       = [](int a, int b) { return a + b; };
-	auto& f2       = [](int a, int b) { return a + b; };
-	const auto& f3 = [](int a, int b) { return a + b; };
-	auto&& f4      = [](int a, int b) { return a + b; };
+	// #2. 다음중 에러를 모두 고르세요 - f2 한개 에러
+	// 
+	//     에러가 아닌 코드중 최선의 코드를 고르세요 - f1 이 최선!!!
+	// 
+	// 핵심 : 람다표현식의 최종 결과는 "임시객체(rvalue)" 이다.
+
+	auto  f1       = [](int a, int b) { return a + b; }; // ok
+	auto& f2       = [](int a, int b) { return a + b; }; // error.
+								// => 임시객체를 lvalue reference 로 가리킬수 없다
+
+	const auto& f3 = [](int a, int b) { return a + b; }; // ok	
+	auto&& f4      = [](int a, int b) { return a + b; }; // ok
+					// auto&& 는 "forwarding reference" 인데.
+					// 우변이 rvalue 이므로 auto : 값 타입, auto&& 는  타입&&(rvalue reference)
 }
 
+// 참고 : Point pt = Point(1, 2) 에대해서 생각해 봅시다.
