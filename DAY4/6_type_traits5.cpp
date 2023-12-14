@@ -10,8 +10,10 @@ template<typename T> struct remove_all_pointer
 };
 
 template<typename T> struct remove_all_pointer<T*>
-{
-	using type = remove_all_pointer<T>::type ;
+{											// int**  *	
+											// int*  * 
+											// int  *	 	
+	using type = typename remove_all_pointer<T>::type ;
 };
 
 int main()
