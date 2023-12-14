@@ -16,7 +16,7 @@ int main()
 	// 해결책 : 1, 2번째 인자가 같아야 한다!!! 가 필요 합니다
 	// => C++20 부터 "template 람다" 문법 추가.
 
-	auto swap2 = []<typename T>(T & a, T & b) {  }; // 구현 생략.
+	auto swap2 = []<typename T>(T& a, T& b) {  }; // 구현 생략.
 	
 	swap2(n, d); // error
 }
