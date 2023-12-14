@@ -52,7 +52,7 @@ public:
 	template<typename T1, typename T2, 
 		typename T3 = std::enable_if_t< 
 				std::is_convertible_v<T1, std::string> && 
-				std::is_convertible_v<T2, std::string> >
+				std::is_convertible_v<T2, std::string> >>
 
 	People(T1&& n, T2&& a)
 		: name(std::forward<T1>(n)), address(std::forward<T2>(a)) {}
