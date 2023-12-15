@@ -1,5 +1,6 @@
 // 8_tuple1 - 245 page
 #include <tuple>
+#include <iostream>
 
 int main()
 {
