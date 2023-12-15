@@ -23,5 +23,5 @@ int main()
 	// enable_if 꼭 기억할것
 	// 1. enable_if<false, "타입">::type  은 에러.. "type" 이 없다.
 	// 2. enable_if<true,  "타입">::type  의 결과로 나오는 타입은 "타입"
-	// 2. enable_if<true>::type           의 결과로 나오는 타입은 "void"
+	// 3. enable_if<true>::type           의 결과로 나오는 타입은 "void"
 }
