@@ -15,6 +15,7 @@ void foo(Types ... args)
 
 int main()
 {	
+	// 복습하실때 아래 코드를 "godbolt.org" 에 넣고 확인해 보세요.
 	foo(1);
 	foo(1, 2);	
 	foo(1, 2, 3);
