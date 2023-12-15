@@ -1,6 +1,11 @@
 #include <iostream>
 #include <type_traits>
 
+// enable_if 기술 사용법
+// std::enable_if<조건, "타입">::type 의 최종 결과는
+//                조건이 참이면   : ?
+//                조건이 거짓이면 : ?
+
 
 // 아래 리턴 타입의 코드가 핵심입니다.
 template<typename T> 
