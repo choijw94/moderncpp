@@ -24,15 +24,16 @@ struct tuple<T, Types...> : public tuple<Types...>
 int main()
 {
 	//	tuple<> t0;
-	//	tuple<             short> t1; 
-	//	tuple<     double, short> t2; 
-	//	tuple<int, double, short> t3; 
+	//	tuple<             short> t1; // 2번째 부모  - 2 
+	//	tuple<     double, short> t2; // 1번째 부모	- 3.4
+	//	tuple<int, double, short> t3; // 0번째 부모  - 1 보관
 
 	tuple<int, double, short> t(1, 3.4, 2);
 
-	std::cout << t.value << std::endl; // 예측해 보세요
+
+	std::cout << t.value << std::endl; // 1
 
 	// 주석처럼 결과가 나오도록 해보세요
-	std::cout << ? << std::endl; // 3.4
-	std::cout << ? << std::endl; // 2 
+	std::cout << static_cast<tuple<double, short>&>(t).value  << std::endl; // 3.4
+	std::cout << static_cast<tuple<short>&>(t).value << std::endl; // 2 
 }
