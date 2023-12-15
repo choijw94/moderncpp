@@ -49,3 +49,12 @@ get(TP& tp)
 {
 	return static_cast<TP의 N번째 부모&>(tp).value;
 }
+
+// 결국 get 을 만들려면 "임의의 튜플 타입 TP" 에서
+// 1. TP의 N 번째 요소의 타입과
+// 2. TP의 N 번째 기반 클래스의 타입을 구해야 합니다.
+
+// 앞의예제에서 "함수 T" 에서
+// => N 번째 인자의 타입 구하기 와 거의 유사합니다
+// int(int, double, short)   의 1번째 인자 타입
+// tuple<int, double, short> 의 1번째 요소 타입
