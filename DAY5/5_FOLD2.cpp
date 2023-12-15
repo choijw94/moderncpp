@@ -17,7 +17,12 @@ void Show(Types ... args)
 {
 	// #1. 초기값은 "0" 뿐 아니라 "모든 값(객체)" 를 사용할수 있습니다.
 	//     아래 코드 해석해 보세요
+	// 초기값     : std::cout 
+	// 이항연산자 : <<
+	// => binary left fold
 	(std::cout << ... << args);
+			// ((((std::cout << 1) << 2) << 3) << 4) << 5
+
 }
 
 int main()
