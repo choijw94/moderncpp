@@ -23,7 +23,8 @@ template<typename ... Types> void foo(Types ... args)
 
 
 	// args 의 모든 요소를 printv 에 보내려면
-
+	// => 아래 방법은 C++11 처음 나왔을때 사용했던 방법입니다.
+	// => 지금은 더좋은 방법 있습니다.(fold expression 등)
 	int x[] = { 0, (printv(args), 0)... }; 
 				// { 0, (printv(1), 0), (printv(2), 0), (printv(3), 0) }
 }
