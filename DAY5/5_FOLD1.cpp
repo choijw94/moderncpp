@@ -12,14 +12,18 @@ int Sum(Types ... args)
 	// 합을 구하려면 : 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10
 	// => 즉, pack 에 있는 모든 요소에 대해서 이항연산(+) 를 수행하면 된다.
 
-	int s = (... + args);
+//	int s = (... + args);		// args 에 요소가 없으면 error.
+	int s = (0 + ... + args);	// args 에 요소가 없어도 ok.
+	     // ((((0+1)+2)+3)+4)+5 .... 
 
 	return s;
 }
 
 int main()
 {
-	int n = Sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+//	int n = Sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+	int n = Sum();
+
 	std::cout << n << std::endl;
 }
 
