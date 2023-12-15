@@ -43,8 +43,6 @@ printv(const T& v)
 	std::cout << v << std::endl;
 }
 
-
-
 int main()
 {
 	int n = 10;
@@ -54,4 +52,8 @@ int main()
 	printv(d);
 	printv(&n);
 }
+// https://github.com/aosp-mirror  에서 ( 안드로이드 소스 입니다.)
+
+// platform system core 라는 레포지토리 선택후
+// libutils/include/utils  아래 에서 typehelpers.h 열어 보세요
 
