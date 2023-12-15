@@ -16,6 +16,15 @@ template<typename T> struct result
 	using type = T;
 };
 
+// 핵심 : int (int, double) 형태의 타입에서 반환타입(int) 을 얻을수 있도록
+//       부분 특수화 버전을 만들어야 합니다. 이부분이 핵심!!
+// primary template 의 template 인자는 한개 지만
+// 아래처럼 부분 특수화 할때는 template 인자의 갯수가 달라도 됩니다.
+template<typename R, typename A1, typename A2> struct result< R(A1, A2) >
+{
+	using type = R;
+};
+
 
 template<typename T> void foo(T& a) 
 {
@@ -24,6 +33,11 @@ template<typename T> void foo(T& a)
 
 	cout << typeid(n).name() << endl; 
 }
+
+
+
+
+
 
 int main()
 {
