@@ -9,15 +9,15 @@ struct tuple
 template<typename T, typename ... Types>
 struct tuple<T, Types...> : public tuple<Types...>
 {
-	using baseType = tuple<Types...>;
+	using base = tuple<Types...>;
 
 	T value;
 
 	tuple() = default;
-	tuple(const T& v, const Types&& ... args) 
-			: value(v), baseType(args...) {}
+	tuple(const T& v, const Types& ... args) 
+			: value(v), base(args...) {}
 
-	static constexpr int N = baseType::N + 1;
+	static constexpr int N = base::N + 1;
 };
 
 
