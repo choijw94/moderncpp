@@ -33,7 +33,8 @@ void gcd(double a, double b) { std::cout << "double\n"; }
 
 int main()
 {
-	gcd(6, 9);		
-	gcd(3.1, 5.4); 
-	gcd(3.1f, 5.4f); 
+	gcd(6, 9);			// T 버전 사용
+	gcd(3.1, 5.4);		// exactly matching 에 의해 double 버전 사용
+	gcd(3.1f, 5.4f);	// T 버전 사용하기로 결정되지만, SFINAE 원칙에 의해서
+						// T 버전이 후보에서 제외 되고, double 버전 사용
 }
