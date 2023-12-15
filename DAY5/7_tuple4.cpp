@@ -14,7 +14,7 @@ struct tuple<T, Types...> : public tuple<Types...>
 	tuple() = default;
 	tuple(const T& v) : value(v) {}
 
-	static constexpr int N = 1;
+	static constexpr int N = ??  ;
 };
 
 int main()
