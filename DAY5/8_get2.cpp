@@ -36,4 +36,16 @@ int main()
 	// 주석처럼 결과가 나오도록 해보세요
 	std::cout << static_cast<tuple<double, short>&>(t).value  << std::endl; // 3.4
 	std::cout << static_cast<tuple<short>&>(t).value << std::endl; // 2 
+
+
+	// get 의 모양을 생각해 봅시다.
+	double d = get<1>(t);
+	get<1>(t) = 2.1;		// 좌변에 올수 있어야 하므로 참조 반환
+}
+
+template<int N, typename TP>  // TP 는 임의의 튜플
+TP의 N번째 요소의 타입&
+get(TP& tp)
+{
+	return static_cast<TP의 N번째 부모&>(tp).value;
 }
