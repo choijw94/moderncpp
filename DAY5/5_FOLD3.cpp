@@ -1,10 +1,14 @@
 #include <iostream>
 #include <vector>
 
+// (args + ...)	    // E1+(E2+(E3+(E4+E5)))		 unary  right fold
+
 template<typename ... Types>
 void fn(std::vector<int>& v, Types ... args)
 {
 	// pack 안의 모든 요소를 v 에 넣고 싶다.
+	( v.push_back(args) , ... );
+		// v.push_back(E1), (v.push_back(E2), (v.push_back(E3) 
 }
 
 int main()
