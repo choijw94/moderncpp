@@ -28,7 +28,7 @@ template<typename T> void printv(const T& v)
 // C++17 이전에는 "enable_if" 로 해결했습니다.
 
 template<typename T> 
-std::enable_if< std::is_pointer_v<T> >
+std::enable_if_t< std::is_pointer_v<T> >
 printv(const T& v)
 {
 	std::cout << "포인터 버전\n";
@@ -36,7 +36,7 @@ printv(const T& v)
 }
 
 template<typename T> 
-std::enable_if<!std::is_pointer_v<T>>
+std::enable_if_t<!std::is_pointer_v<T>>
 printv(const T& v)
 {
 	std::cout << "포인터 아닌 버전\n";
