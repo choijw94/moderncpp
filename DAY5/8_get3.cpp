@@ -43,14 +43,13 @@ struct tuple_element<N, tuple<T, Types...> >
 };
 
 
-
-
 template<typename TP>
 void foo(TP& tp)
 {
 	
 	// TP : tuple<int, double, short>
-	typename tuple_element<1, TP>::type n; // double
+//	typename tuple_element<1, TP>::type n; // double
+	typename tuple_element<2, TP>::type n; // short
 
 
 
